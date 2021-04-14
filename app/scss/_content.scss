@@ -1,0 +1,278 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.todo {
+ min-height: 12.5rem;
+ padding-top: 3rem;
+ background-image: url('/images/bg-mobile-dark.jpg');
+ background-repeat: no-repeat;
+ background-size: cover;
+
+ &__header--wrap {
+  margin-bottom: 2.5rem;
+ }
+
+ &__title {
+  color: $white;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.6rem;
+ }
+
+ .theme__toggle #theme {
+  display: none;
+ }
+
+ .theme__toggle #theme + label::before {
+  content: '';
+  background-image: url('/images/icon-sun.svg');
+  display: block;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+ }
+
+ .theme__toggle #theme:checked + label::before {
+  background-image: url('/images/icon-moon.svg');
+ }
+}
+
+.content__bg {
+ background-color: $d-veryDarkBlue;
+ min-height: 100vh;
+}
+
+.form {
+ position: absolute;
+ top: 14%;
+ left: 50%;
+ transform: translateX(-50%);
+ width: $widthCalc;
+ border-radius: 4px;
+
+ &__input--item {
+  margin-bottom: 1rem;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  padding: $inputPadding;
+  border-radius: 4px;
+  background-color: $d-veryDarkDesaturatedBlue;
+  width: 100%;
+  border: none;
+  height: 3.25rem;
+ }
+
+ &__input {
+  background-color: transparent;
+  border: 0;
+  color: $d-lightGrayishBlue;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: $fontSize;
+  width: 80%;
+  height: 1.5rem;
+
+  &::placeholder {
+   font-family: 'Josefin Sans', sans-serif;
+  }
+ }
+
+ &__input--checkmark {
+  position: absolute;
+  top: 16px;
+  left: 19px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid grey;
+  border-radius: 50rem;
+  background-color: transparent;
+  z-index: 0;
+  cursor: pointer;
+ }
+
+ &__list {
+  list-style-type: none;
+ }
+
+ &__item {
+  background-color: $d-veryDarkDesaturatedBlue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $inputPadding;
+  color: $d-lightGrayishBlue;
+  font-size: 0.8rem;
+  height: 3.25rem;
+  position: relative;
+
+  &:hover .form__item--remove {
+   display: block;
+   cursor: pointer;
+  }
+
+  &:first-child {
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+  }
+
+  // &:last-child {
+  //  border-bottom-left-radius: 4px;
+  //  border-bottom-right-radius: 4px;
+  // }
+
+  &:not(:last-child) {
+   border-bottom: 1px solid $d-veryDarkGrayishBlue;
+  }
+ }
+
+ input[type='checkbox'] {
+  background-color: transparent;
+  position: absolute;
+  display: none;
+ }
+
+ &__label {
+  position: relative;
+  cursor: pointer;
+ }
+
+ &__checkmark {
+  position: absolute;
+  top: -3px;
+  left: -32px;
+  height: 20px;
+  width: 20px;
+  border: 1px solid grey;
+  border-radius: 50rem;
+  background-color: transparent;
+  z-index: 0;
+  cursor: pointer;
+ }
+
+ input[type='checkbox'] ~ .form__checkmark:hover {
+  border: 0;
+  padding: 1px;
+  background-image: linear-gradient(
+   to right bottom,
+   hsl(192, 100%, 67%),
+   hsl(280, 87%, 65%)
+  );
+ }
+
+ input[type='checkbox'] ~ .form__checkmark:hover::before {
+  content: '';
+  height: 18px;
+  width: 18px;
+  border-radius: 50rem;
+  background-color: $d-veryDarkDesaturatedBlue;
+  display: block;
+  z-index: -2;
+ }
+
+ input[type='checkbox']:checked ~ .form__checkmark:hover::before {
+  background-color: transparent;
+ }
+
+ input[type='checkbox']:checked ~ .form__checkmark {
+  background-image: url('/images/icon-check.svg'),
+   linear-gradient(to right bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  z-index: 2;
+ }
+
+ input[type='checkbox']:checked ~ .form__item--text {
+  text-decoration: line-through;
+ }
+
+ &__item--remove {
+  background-image: url('/images/icon-cross.svg');
+  background-position: right;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  height: 2rem;
+  width: 2rem;
+  display: none;
+ }
+}
+
+.tools {
+ span {
+  color: $d-darkGrayishBlue;
+ }
+
+ &__bar {
+  position: relative;
+  border-top: 1px solid $d-veryDarkGrayishBlue;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 1.4rem;
+ }
+
+ &__inputs {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: $d-veryDarkDesaturatedBlue;
+  font-size: 0.8rem;
+  height: 3.25rem;
+  width: 100%;
+  border-radius: 4px;
+
+  @include breakpoint-up(large) {
+   position: relative;
+   top: 0;
+  }
+
+  span {
+   &:hover {
+    color: $d-lightGrayishBlueHover;
+    cursor: pointer;
+   }
+  }
+
+  input[type='radio'] {
+   opacity: 0;
+   height: 0;
+   width: 0;
+  }
+
+  input[type='radio']:checked ~ span {
+   color: $primaryBlue;
+  }
+ }
+
+ &__buttons {
+  span {
+   &:hover {
+    color: $d-lightGrayishBlueHover;
+    cursor: pointer;
+   }
+  }
+ }
+}
+
+.hidden {
+ display: none;
+}
+
+.drag-item {
+ cursor: grab;
+
+}
+
+.drag-item:active {
+ cursor: grabbing;
+ background-color: hsl(232, 25%, 24%);
+}
+
+// .over {
+// }

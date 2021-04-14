@@ -1,0 +1,59 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+html {
+ font-size: 100%;
+ box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+ padding: 0;
+ margin: 0;
+ box-sizing: inherit;
+}
+
+h1,
+h2,
+p {
+ padding: 0;
+ margin: 0;
+}
+
+a {
+ text-decoration: none;
+ cursor: pointer;
+}
+
+body {
+ min-height: 100vh;
+ font-family: 'Josefin Sans', sans-serif;
+ min-height: 100vh;
+ position: relative;
+}
+
+.container {
+ width: $widthCalc;
+ margin: 0 auto;;
+ max-width: 40rem;
+}
+
+// Flexbox
+.flex-jc {
+ display: flex;
+ justify-content: center;
+}
+
+.flex-jc-ai {
+  display: flex;
+  align-items: center;
+ }
+
+.flex-jc-sb-ai {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
