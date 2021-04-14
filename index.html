@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap"
+   rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script defer src="/app/js/script.js"></script>
+
+  <title>Frontend Mentor | Todo app</title>
+ </head>
+ <body>
+  <div class="todo">
+   <div class="container">
+    <header>
+     <div class="todo__header--wrap flex-jc-sb-ai">
+      <h1 class="todo__title">Todo</h1>
+
+      <div class="theme__toggle">
+       <input type="checkbox" name="theme" id="theme" />
+       <label for="theme"></label>
+      </div>
+     </div>
+    </header>
+   </div>
+  </div>
+
+  <div class="content__bg"></div>
+
+  <form class="form container">
+   <div class="form__input--item">
+    <span class="form__input--checkmark"></span>
+    <label class="form__label"></label>
+    <input
+     type="text"
+     class="form__input"
+     placeholder="Create a new todo..."
+     name="add__todo"
+     id="add__todo"
+    />
+   </div>
+
+   <div class="form__list--container">
+    <ul class="form__list">
+     
+      <!-- <li class="form__item drag-item" draggable="true">
+       <label class="form__label">
+        <input type="checkbox" name="form__item--intput-1" />
+        <span class="form__checkmark"></span>
+        <span class="form__item--text">Eat</span>
+       </label>
+       <span class="form__item--remove" id="remove"></span>
+      </li> -->
+     
+    </ul>
+
+    <!-- Tool Bar -->
+    <div class="form__item tools tools__bar">
+     <div class="tools__counter">
+      <span id="count"></span><span> items left</span>
+     </div>
+     <div class="tools__inputs">
+      <label>
+       <input type="radio" name="filter" id="all" />
+       <span>All</span>
+      </label>
+      <label>
+       <input type="radio" name="filter" id="active" />
+       <span>Active</span>
+      </label>
+      <label>
+       <input type="radio" name="filter" id="completed" />
+       <span>Completed</span>
+      </label>
+     </div>
+     <div class="tools__buttons">
+      <span id="clear__completed">Clear Completed</span>
+     </div>
+    </div>
+   </div>
+  </form>
+ </body>
+</html>
