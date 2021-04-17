@@ -1,5 +1,3 @@
-'use strict';
-
  const body = document.querySelector('body');
  const formInput = document.querySelector('.form__input');
  const addTodo = document.querySelector('.form__input--checkmark');
