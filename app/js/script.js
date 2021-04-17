@@ -155,12 +155,6 @@ const theme = document.getElementById('theme');
      </label>
      <span class="form__item--remove" id="remove"></span>`;
 
-   if (
-    document.querySelector('label input[type="radio"]:checked').id ===
-    'completed'
-   ) {
-    newTodo.classList.add('hidden');
-   }
    formList.appendChild(newTodo);
    updateCount(1);
   });
