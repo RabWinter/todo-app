@@ -14,23 +14,18 @@
 
   <title>Frontend Mentor | Todo app</title>
  </head>
- <body>
+ <body class="dark-theme">
   <div class="todo">
    <div class="container">
-    <header>
-     <div class="todo__header--wrap flex-jc-sb-ai">
-      <h1 class="todo__title">Todo</h1>
-
-      <div class="theme__toggle">
-       <input type="checkbox" name="theme" id="theme" />
-       <label for="theme"></label>
-      </div>
+    <header class="flex-jc-sb-ai">
+     <h1 class="todo__title">Todo</h1>
+     <div class="theme__toggle">
+      <input type="checkbox" name="theme" id="theme" />
+      <label for="theme"></label>
      </div>
     </header>
    </div>
   </div>
-
-  <div class="content__bg"></div>
 
   <form class="form container">
    <div class="form__input--item">
@@ -47,22 +42,60 @@
 
    <div class="form__list--container">
     <ul class="form__list">
-     
-      <!-- <li class="form__item drag-item" draggable="true">
+     <li class="form__item drag-item" draggable="true">
        <label class="form__label">
-        <input type="checkbox" name="form__item--intput-1" />
-        <span class="form__checkmark"></span>
-        <span class="form__item--text">Eat</span>
-       </label>
-       <span class="form__item--remove" id="remove"></span>
-      </li> -->
-     
+         <input type="checkbox" name="form__item--intput-1" checked/>
+         <span class="form__checkmark"></span>
+         <span class="form__item--text">Complete nline JavaScript Course</span>
+        </label>
+        <span class="form__item--remove" id="remove"></span>
+      </li>
+      <li class="form__item drag-item" draggable="true">
+        <label class="form__label">
+          <input type="checkbox" name="form__item--intput-1" />
+          <span class="form__checkmark"></span>
+          <span class="form__item--text">Jog around the park 3 times</span>
+        </label>
+        <span class="form__item--remove" id="remove1"></span>
+      </li>
+      <li class="form__item drag-item" draggable="true">
+        <label class="form__label">
+          <input type="checkbox" name="form__item--intput-1" />
+          <span class="form__checkmark"></span>
+          <span class="form__item--text">10 minutes meditation</span>
+        </label>
+        <span class="form__item--remove" id="remove2"></span>
+      </li>
+      <li class="form__item drag-item" draggable="true">
+        <label class="form__label">
+          <input type="checkbox" name="form__item--intput-1" />
+          <span class="form__checkmark"></span>
+          <span class="form__item--text">Read for 1 hour</span>
+        </label>
+        <span class="form__item--remove" id="remove3"></span>
+      </li>
+      <li class="form__item drag-item" draggable="true">
+        <label class="form__label">
+          <input type="checkbox" name="form__item--intput-1" />
+          <span class="form__checkmark"></span>
+          <span class="form__item--text">Pick up groceries</span>
+        </label>
+        <span class="form__item--remove" id="remove4"></span>
+      </li>
+      <li class="form__item drag-item" draggable="true">
+        <label class="form__label">
+          <input type="checkbox" name="form__item--intput-1" />
+          <span class="form__checkmark"></span>
+          <span class="form__item--text">Complete Todo App on Frontend Mentor</span>
+        </label>
+        <span class="form__item--remove" id="remove5"></span>
+      </li>
     </ul>
 
     <!-- Tool Bar -->
     <div class="form__item tools tools__bar">
      <div class="tools__counter">
-      <span id="count"></span><span> items left</span>
+      <span id="count">5</span><span> items left</span>
      </div>
      <div class="tools__inputs">
       <label>
@@ -83,6 +116,8 @@
      </div>
     </div>
    </div>
+   <p class="drag__text">Drag and drop to reorder list</p>
   </form>
  </body>
 </html>
+
