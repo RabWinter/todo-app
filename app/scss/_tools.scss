@@ -37,7 +37,7 @@
 
   span {
    &:nth-child(2) {
-    padding: 0 0.6rem;
+    padding: 0 0.3rem;
    }
   }
 
@@ -47,7 +47,7 @@
    transform: translateX(-50%);
    background-color: transparent;
    height: 3.0625rem;
-   width: 32%;
+   width: 45%;
   }
 
   span {
@@ -59,7 +59,10 @@
   }
 
   input[type='radio'] {
-   display: none;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  //  display: none;
   }
 
   input[type='radio']:checked ~ span {
