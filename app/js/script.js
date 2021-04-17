@@ -2,6 +2,7 @@
 function init() {
  const body = document.querySelector('body');
  const formInput = document.querySelector('.form__input');
+ const addTodo = document.querySelector('.form__input--checkmark');
  const form = document.querySelector('.form');
  const formList = document.querySelector('.form__list');
  const todo = document.querySelectorAll('.form__item');
@@ -181,6 +182,8 @@ function init() {
    removeTodo(e.target.parentElement);
   }
  });
+ 
+ addTodo.addEventListener('click', createTodo);
 
  clear.addEventListener('click', (e) => {
   clearCompleted();
