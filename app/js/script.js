@@ -22,13 +22,6 @@ const radioChecked = document.querySelector(
    newTodo.classList.add('form__item', 'drag-item');
    newTodo.draggable = 'true';
    saveLocalTodos(formInput.value);
-   newTodo.innerHTML = `<label class="form__label">
-  <input type="checkbox" name="form__item--intput-1" />
-  <span class="form__checkmark"></span>
-  <span class="form__item--text">${formInput.value}</span>
- </label>
- <span class="form__item--remove" id="remove"></span>`;
-
    if (
     document.querySelector(
  '.form__item input[type="radio"]:checked').id ===
@@ -36,6 +29,14 @@ const radioChecked = document.querySelector(
    ) {
     newTodo.classList.add('hidden');
    }
+   newTodo.innerHTML = `<label class="form__label">
+  <input type="checkbox" name="form__item--intput-1" />
+  <span class="form__checkmark"></span>
+  <span class="form__item--text">${formInput.value}</span>
+ </label>
+ <span class="form__item--remove" id="remove"></span>`;
+
+   
    formList.appendChild(newTodo);
    updateCount(1);
 
