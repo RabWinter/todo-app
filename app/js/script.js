@@ -30,7 +30,8 @@ const radioChecked = document.querySelector(
  <span class="form__item--remove" id="remove"></span>`;
 
    if (
-    radioChecked.id ===
+    document.querySelector(
+ '.form__item input[type="radio"]:checked').id ===
     'completed'
    ) {
     newTodo.classList.add('hidden');
