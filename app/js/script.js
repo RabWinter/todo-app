@@ -28,7 +28,7 @@ const theme = document.getElementById('theme');
  <span class="form__item--remove" id="remove"></span>`;
 
    if (
-    document.querySelector('.form__item input[type="radio"]:checked').id ===
+    document.querySelector('label input[type="radio"]:checked').id ===
     'completed'
    ) {
     newTodo.classList.add('hidden');
