@@ -161,7 +161,7 @@ function init() {
 
  function removeLocalTodos(todo) {
   checkLocalTodos(todo);
-  console.log(todo.children[0].innerText);
+  
   const todoIndex = todo.children[0].innerText;
   todos.splice(todos.indexOf(todoIndex), 1);
   localStorage.setItem('todos', JSON.stringify(todos));
