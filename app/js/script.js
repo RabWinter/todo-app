@@ -17,18 +17,12 @@ const radioChecked = document.querySelector(
 
  function createTodo(e) {
   e.preventDefault();
-  if (formInput.value.length > 0) {
+  
    const newTodo = document.createElement('li');
    newTodo.classList.add('form__item', 'drag-item');
    newTodo.draggable = 'true';
    saveLocalTodos(formInput.value);
-   if (
-    document.querySelector(
- '.form__item input[type="radio"]:checked').id ===
-    'completed'
-   ) {
-    newTodo.classList.add('hidden');
-   }
+   
    newTodo.innerHTML = `<label class="form__label">
   <input type="checkbox" name="form__item--intput-1" />
   <span class="form__checkmark"></span>
@@ -36,15 +30,19 @@ const radioChecked = document.querySelector(
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
-   
+   if (
+    document.querySelector(
+ '.form__item input[type="radio"]:checked').id ===
+    'completed'
+   ) {
+    newTodo.classList.add('hidden');
+   }
    formList.appendChild(newTodo);
    updateCount(1);
 
    // Reset text
    formInput.value = '';
-  } else {
-   alert('Please enter a task');
-  }
+  
  }
 
  function updateCount(number) {
