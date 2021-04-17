@@ -1,6 +1,8 @@
+'use strict';
+
  const body = document.querySelector('body');
  const formInput = document.querySelector('.form__input');
-//  const addTodo = document.querySelector('.form__input--checkmark');
+ const addTodo = document.querySelector('.form__input--checkmark');
  const form = document.querySelector('.form');
  const formList = document.querySelector('.form__list');
  const todo = document.querySelectorAll('.form__item');
@@ -175,13 +177,13 @@
   createTodo(e);
  });
 
+ addTodo.addEventListener('click', createTodo);
+
  formList.addEventListener('click', (e) => {
   if (e.target.classList.contains('form__item--remove')) {
    removeTodo(e.target.parentElement);
   }
  });
- 
-//  addTodo.addEventListener('click', createTodo);
 
  clear.addEventListener('click', (e) => {
   clearCompleted();
@@ -211,3 +213,4 @@
  formList.addEventListener('dragover', (e) => {
   dragOver(e);
  });
+
