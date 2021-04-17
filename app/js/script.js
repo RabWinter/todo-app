@@ -29,12 +29,12 @@ let radioChecked = document.querySelector(
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
-   if (
-    radioChecked.id ===
-    'completed'
-   ) {
-    newTodo.classList.add('hidden');
-   }
+//    if (
+//     radioChecked.id ===
+//     'completed'
+//    ) {
+//     newTodo.classList.add('hidden');
+//    }
    formList.appendChild(newTodo);
    updateCount(1);
 
