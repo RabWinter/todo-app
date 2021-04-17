@@ -9,6 +9,9 @@
  const todoCount = document.getElementById('count');
  const clear = document.getElementById('clear__completed');
  const theme = document.getElementById('theme');
+let radioChecked = document.querySelector(
+ '.form__item input[type="radio"]:checked'
+);
 
  theme.checked = true;
 
@@ -27,7 +30,7 @@
  <span class="form__item--remove" id="remove"></span>`;
 
    if (
-    document.querySelector('.form__item input[type="radio"]:checked').id ===
+    radioChecked.id ===
     'completed'
    ) {
     newTodo.classList.add('hidden');
