@@ -213,4 +213,3 @@
  formList.addEventListener('dragover', (e) => {
   dragOver(e);
  });
-}
