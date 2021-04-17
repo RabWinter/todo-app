@@ -304,7 +304,7 @@
   border-radius: 4px;
 }
 .tools__inputs span:nth-child(2) {
-  padding: 0 0.6rem;
+  padding: 0 0.3rem;
 }
 @media (min-width: 64em) {
   .tools__inputs {
@@ -313,7 +313,7 @@
     transform: translateX(-50%);
     background-color: transparent;
     height: 3.0625rem;
-    width: 32%;
+    width: 45%;
   }
 }
 .tools__inputs span:hover {
@@ -322,7 +322,9 @@
   cursor: pointer;
 }
 .tools__inputs input[type=radio] {
-  display: none;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 .tools__inputs input[type=radio]:checked ~ span {
   color: var(--primary-blue);
