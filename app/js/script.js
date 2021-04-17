@@ -1,5 +1,5 @@
 'use strict';
-function init() {
+
  const body = document.querySelector('body');
  const formInput = document.querySelector('.form__input');
  const addTodo = document.querySelector('.form__input--checkmark');
@@ -214,5 +214,3 @@ function init() {
   dragOver(e);
  });
 }
-init();
-
