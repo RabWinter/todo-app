@@ -1,0 +1,99 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'todo' as *;
+@use 'form' as *;
+@use 'tools' as *;
+
+html {
+ font-size: 100%;
+ box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+ padding: 0;
+ margin: 0;
+ box-sizing: inherit;
+}
+
+h1,
+h2,
+p {
+ padding: 0;
+ margin: 0;
+}
+
+a {
+ text-decoration: none;
+ cursor: pointer;
+}
+
+body {
+ min-height: 100vh;
+ font-family: 'Josefin Sans', sans-serif;
+ position: relative;
+ background-color: var(--main-bg);
+ font-size: var(--font-sm);
+ 
+ @include breakpoint-up(large) {
+   font-size: var(--fontSize);
+ }
+}
+
+.container {
+ width: var(--widthCalc);
+ margin: 0 auto;
+ max-width: 34.375rem;
+}
+
+// Flexbox
+.flex-jc {
+ display: flex;
+ justify-content: center;
+}
+
+.flex-jc-ai {
+  display: flex;
+  align-items: center;
+ }
+
+.flex-jc-sb-ai {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+ }
+ 
+ .drag-item {
+  cursor: grab;
+ }
+ 
+ .drag-item:active {
+  cursor: grabbing;
+ }
+ 
+ .drag__text {
+  color: var(--font-light);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: -8rem;
+ 
+  @include breakpoint-up(large) {
+   bottom: -4rem;
+  }
+ }
+ 
+ .fall {
+   transform: translateY(10rem) rotateZ(20deg);
+   opacity: 0;
+   transition: all 400ms ease-in-out;
+   z-index: 1;
+ }
+
+

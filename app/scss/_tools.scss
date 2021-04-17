@@ -1,0 +1,79 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.tools {
+ span {
+  color: var(--font-light);
+ }
+
+ &__bar {
+  position: relative;
+  border-top: 1px solid var(--font-light);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: var(--todo-bg);
+
+  padding: 1.4rem;
+
+  @include breakpoint-up(large) {
+   height: 3.0625rem;
+   font-size: var(--font-sm);
+  }
+ }
+
+ &__inputs {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--todo-bg);
+  font-size: var(--font-sm);
+  height: 3.25rem;
+  width: 100%;
+  border-radius: 4px;
+
+  span {
+   &:nth-child(2) {
+    padding: 0 0.6rem;
+   }
+  }
+
+  @include breakpoint-up(large) {
+   top: 0;
+   left: 50%;
+   transform: translateX(-50%);
+   background-color: transparent;
+   height: 3.0625rem;
+   width: 32%;
+  }
+
+  span {
+   &:hover {
+    color: var(--text-hover);
+    @include hover(speed);
+    cursor: pointer;
+   }
+  }
+
+  input[type='radio'] {
+   display: none;
+  }
+
+  input[type='radio']:checked ~ span {
+   color: var(--primary-blue);
+  }
+ }
+
+ &__buttons {
+  span {
+   &:hover {
+    color: var(--text-hover);
+    @include hover(speed);
+    cursor: pointer;
+   }
+  }
+ }
+}

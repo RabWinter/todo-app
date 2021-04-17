@@ -1,0 +1,53 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Header Layout
+.todo {
+ min-height: 12.5rem;
+ padding-top: 3rem;
+ background-image: var(--bg-image-mobile);
+ background-repeat: no-repeat;
+ background-size: cover;
+
+ @include breakpoint-up(medium) {
+  background-image: var(--bg-image-desktop);
+ }
+
+ @include breakpoint-up(large) {
+  min-height: 18.75rem;
+  padding-top: 4.3rem;
+ }
+
+ &__header--wrap {
+  margin-bottom: 2.5rem;
+ }
+
+ &__title {
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 0.6rem;
+
+  @include breakpoint-up(large) {
+   font-size: 2.5rem;
+   letter-spacing: 1rem;
+  }
+ }
+
+ #theme {
+  display: none;
+ }
+
+ #theme + label::before {
+  content: '';
+  background-image: url('/images/icon-moon.svg');
+  display: block;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+ }
+
+ #theme:checked + label::before {
+  background-image: url('/images/icon-sun.svg');
+ }
+}

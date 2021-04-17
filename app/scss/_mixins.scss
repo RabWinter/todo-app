@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+$breakpoints-up: (
+ 'medium': '48em',
+ 'large': '64em',
+ 'xlarge': '81em',
+);
+
+$breakpoints-down: (
+ 'medium': '47.9375em',
+ 'large': '63.9375em',
+ 'xlarge': '80.9375em',
+);
+
+@mixin breakpoint-up($size) {
+ @media (min-width: map-get($breakpoints-up, $size)) {
+  @content;
+ }
+}
+
+@mixin breakpoint-down($size) {
+ @media (max-width: map-get($breakpoints-down, $size)) {
+  @content;
+ }
+}
+
+@mixin hover($speed) {
+ transition: all 200ms ease-in-out;
+}
