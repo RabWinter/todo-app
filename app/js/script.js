@@ -1,13 +1,16 @@
+'use strict';
+
+const body = document.querySelector('body');
 const formInput = document.querySelector('.form__input');
 const form = document.querySelector('.form');
 const formList = document.querySelector('.form__list');
 const todo = document.querySelectorAll('.form__item');
+const todoText = document.querySelectorAll('.form__item--text');
 const todoCount = document.getElementById('count');
 const clear = document.getElementById('clear__completed');
-// let todoText = document.querySelector('.form__item--text')
+const theme = document.getElementById('theme');
 
-const checkMark = document.getElementById('check');
-let circle = document.querySelector('span');
+theme.checked = true;
 
 function createTodo(e) {
  e.preventDefault();
@@ -15,6 +18,7 @@ function createTodo(e) {
   const newTodo = document.createElement('li');
   newTodo.classList.add('form__item', 'drag-item');
   newTodo.draggable = 'true';
+  saveTodos(formInput.value);
   newTodo.innerHTML = `<label class="form__label">
   <input type="checkbox" name="form__item--intput-1" />
   <span class="form__checkmark"></span>
@@ -22,6 +26,12 @@ function createTodo(e) {
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
+  if (
+   document.querySelector('.form__item input[type="radio"]:checked').id ===
+   'completed'
+  ) {
+   newTodo.classList.add('hidden');
+  }
   formList.appendChild(newTodo);
   updateCount(1);
 
@@ -37,8 +47,11 @@ function updateCount(number) {
 }
 
 function removeTodo(el) {
- el.remove();
  updateCount(-1);
+ el.classList.add('fall');
+ el.addEventListener('transitionend', () => {
+  el.remove();
+ });
 }
 
 function clearCompleted() {
@@ -49,8 +62,9 @@ function clearCompleted() {
   });
 }
 
+// Filter
 function filterTodos(id) {
- const allItems = document.querySelectorAll('li');
+ const allItems = formList.querySelectorAll('li');
  ////////////////
  switch (id) {
   case 'all':
@@ -71,9 +85,85 @@ function filterTodos(id) {
      ? item.classList.add('hidden')
      : item.classList.remove('hidden');
    });
+   return;
  }
- ///////////////////////////////
 }
+
+///////////////////////////////
+// Drag & Drop
+function dragOver(e) {
+ e.preventDefault();
+ const dragEl = document.querySelector('.draggable-el');
+ const currentEl = e.target;
+ const canSort =
+  dragEl !== currentEl && currentEl.classList.contains('drag-item');
+
+ if (!canSort) {
+  return;
+ }
+
+ const nextEl = getNextEl(e.clientY, currentEl);
+
+ if (
+  (nextEl && dragEl === nextEl.previousElementSibling) ||
+  dragEl === nextEl
+ ) {
+  return;
+ }
+
+ formList.insertBefore(dragEl, nextEl);
+}
+
+// Dragover fires over the center of div
+function getNextEl(cursorPosition, currentEl) {
+ const currentElCoords = currentEl.getBoundingClientRect();
+ const currentElCenter = currentElCoords.y + currentElCoords.height / 2;
+
+ return cursorPosition < currentElCenter
+  ? currentEl
+  : currentEl.nextElementSibling;
+}
+
+let todos;
+function checkLocalTodos(todo) {
+ if (localStorage.getItem('todos') === null) {
+  todos = [];
+ } else {
+  todos = JSON.parse(localStorage.getItem('todos'));
+ }
+}
+
+function saveTodos(todo) {
+ checkLocalTodos(todos);
+ todos.push(todo);
+ localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function getTodos() {
+ checkLocalTodos(todos);
+ todos.forEach((todo) => {
+  const newTodo = document.createElement('li');
+  newTodo.classList.add('form__item', 'drag-item');
+  newTodo.draggable = 'true';
+  newTodo.innerHTML = `<label class="form__label">
+      <input type="checkbox" name="form__item--intput-1" />
+      <span class="form__checkmark"></span>
+      <span class="form__item--text">${todo}</span>
+     </label>
+     <span class="form__item--remove" id="remove"></span>`;
+
+  formList.appendChild(newTodo);
+  updateCount(1);
+ });
+}
+
+localStorage.clear();
+
+////////////////////////////////////////////////
+// Event Listeners
+
+// Load stored todos
+document.addEventListener('DOMContentLoaded', getTodos);
 
 form.addEventListener('submit', (e) => {
  createTodo(e);
@@ -89,30 +179,17 @@ clear.addEventListener('click', (e) => {
  clearCompleted();
 });
 
-document.querySelectorAll('input[type="radio"]').forEach((item) => {
- item.addEventListener('click', (e) => {
+document.querySelectorAll('.form__item input[type="radio"]').forEach((item) => {
+ item.addEventListener('change', (e) => {
   filterTodos(e.target.id);
  });
 });
 
+theme.addEventListener('click', (e) => {
+ body.classList = [theme.checked ? 'dark-theme' : 'light-theme'];
+});
+
 // Drag & Drop
-function dragOver(e) {
- e.preventDefault();
- const dragEl = document.querySelector('.draggable-el');
- const currentEl = e.target;
- const canSort =
-  dragEl !== currentEl && currentEl.classList.contains('drag-item');
-
- if (!canSort) return;
-
- const nextEl =
-  currentEl === dragEl.nextElementSibling
-   ? currentEl.nextElementSibling
-   : currentEl;
-
- formList.insertBefore(dragEl, nextEl);
-}
-
 formList.addEventListener('dragstart', (e) => {
  e.target.classList.add('draggable-el');
 });
@@ -124,3 +201,4 @@ formList.addEventListener('dragend', (e) => {
 formList.addEventListener('dragover', (e) => {
  dragOver(e);
 });
+
