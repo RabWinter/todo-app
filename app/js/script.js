@@ -29,7 +29,6 @@ function init() {
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
-   console.log(document.querySelector('label input[type="radio"]:checked').id);
    if (radioChecked === 'completed') {
     newTodo.classList.add('hidden');
    }
