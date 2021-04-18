@@ -1,15 +1,17 @@
 'use strict';
 
+function init() {
  const body = document.querySelector('body');
  const formInput = document.querySelector('.form__input');
-//  const addTodo = document.querySelector('.form__input--checkmark');
+ const addTodo = document.querySelector('.form__input--checkmark');
  const form = document.querySelector('.form');
  const formList = document.querySelector('.form__list');
  const todo = document.querySelectorAll('.form__item');
  const todoCount = document.getElementById('count');
  const clear = document.getElementById('clear__completed');
-const theme = document.getElementById('theme');
-// const radioChecked = document.querySelector('.form__item input[type="radio"]:checked');
+ const theme = document.getElementById('theme');
+ const radioChecked = document.querySelector('input[type="radio"]:checked').id;
+ const allChecked = document.getElementById('all');
 
  theme.checked = true;
 
@@ -27,10 +29,8 @@ const theme = document.getElementById('theme');
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
-   if (
-    document.querySelector('label input[type="radio"]:checked').id ===
-    'completed'
-   ) {
+   console.log(document.querySelector('label input[type="radio"]:checked').id);
+   if (radioChecked === 'completed') {
     newTodo.classList.add('hidden');
    }
    formList.appendChild(newTodo);
@@ -42,6 +42,8 @@ const theme = document.getElementById('theme');
    alert('Please enter a task');
   }
  }
+
+ function help(todo) {}
 
  function updateCount(number) {
   todoCount.innerText = +todoCount.innerText + number;
@@ -162,7 +164,7 @@ const theme = document.getElementById('theme');
 
  function removeLocalTodos(todo) {
   checkLocalTodos(todo);
-  
+
   const todoIndex = todo.children[0].innerText;
   todos.splice(todos.indexOf(todoIndex), 1);
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -172,13 +174,16 @@ const theme = document.getElementById('theme');
  // Event Listeners
 
  // Load stored todos
- document.addEventListener('DOMContentLoaded', getLocalTodos);
+ document.addEventListener('DOMContentLoaded', () => {
+  getLocalTodos();
+  allChecked.checked = true;
+ });
 
  form.addEventListener('submit', (e) => {
   createTodo(e);
  });
 
-//  addTodo.addEventListener('click', createTodo);
+ addTodo.addEventListener('click', createTodo);
 
  formList.addEventListener('click', (e) => {
   if (e.target.classList.contains('form__item--remove')) {
@@ -214,4 +219,5 @@ const theme = document.getElementById('theme');
  formList.addEventListener('dragover', (e) => {
   dragOver(e);
  });
-
+}
+init();
