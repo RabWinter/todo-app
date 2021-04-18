@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 function init() {
  const body = document.querySelector('body');
@@ -10,7 +10,6 @@ function init() {
  const todoCount = document.getElementById('count');
  const clear = document.getElementById('clear__completed');
  const theme = document.getElementById('theme');
- const radioChecked = document.querySelector('input[type="radio"]:checked').id;
  const allChecked = document.getElementById('all');
 
  theme.checked = true;
@@ -29,9 +28,12 @@ function init() {
  </label>
  <span class="form__item--remove" id="remove"></span>`;
 
-   if (radioChecked === 'completed') {
-    newTodo.classList.add('hidden');
-   }
+   if (
+   document.querySelector('.tools__inputs input[type="radio"]:checked').id ===
+   'completed'
+  ) {
+   newTodo.classList.add('hidden');
+  }
    formList.appendChild(newTodo);
    updateCount(1);
 
