@@ -51,12 +51,9 @@ function init() {
  }
 
  function removeTodo(el) {
+  el.remove();
   updateCount(-1);
-  el.classList.add('fall');
   removeLocalTodos(el);
-  el.addEventListener('transitionend', () => {
-   el.remove();
-  });
  }
 
  function clearCompleted() {
