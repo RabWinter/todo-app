@@ -17,7 +17,7 @@
   padding: 1.4rem;
 
   @include breakpoint-up(large) {
-   height: 3.0625rem;
+   height: 3.125rem;
    font-size: var(--font-sm);
   }
  }
@@ -47,7 +47,7 @@
    left: 50%;
    transform: translateX(-50%);
    background-color: transparent;
-   height: 3.0625rem;
+   height: 3.125rem;
    width: 45%;
   }
 
